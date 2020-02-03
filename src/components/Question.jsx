@@ -12,7 +12,6 @@ class Question extends Component {
     return (
       <div>
         <h1>{question}</h1>
-
       </div>
     );
   }
