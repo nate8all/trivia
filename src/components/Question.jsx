@@ -11,7 +11,7 @@ class Question extends Component {
     let question = "Where is the Google Code Next Office located?";
     return (
       <div>
-        <h1>{question}</h1>
+        <h1>{this.props.data.question}</h1>
       </div>
     );
   }
