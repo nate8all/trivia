@@ -13,8 +13,7 @@ class Question extends Component {
     question.once("value").then(getQuestions);
     return (
       <div>
-        <h1>{question}</h1>
-
+        <h1>{this.props.data.question}</h1>
       </div>
     );
   }
