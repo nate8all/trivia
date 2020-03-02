@@ -8,7 +8,9 @@ class Question extends Component {
     super(props);
   }
   render() {
-    let question = "Where is the Google Code Next Office located?";
+    let kahoot = firebase.database();
+    let question = kahoot.ref("/question");
+    question.once("value").then(getQuestions);
     return (
       <div>
         <h1>{question}</h1>
