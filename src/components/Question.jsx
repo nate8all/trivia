@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
-import { isConstructorDeclaration } from 'typescript';
-import {buildFirebase} from '../clients/firebase.js';
 // import components
 
+//class Trivia {
+//   constructor (question, choices, answer){
+//     this.question = question;
+//     this.choices = choices;
+//     this.answer = answer;
+//  }
+// }
 
 class Question extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = ""
+  }
+  handleClick(index) {
+    if (this.props.data.answer === index) {
+      alert("Correct");
+      this.props.nextQuestion();
+    }
+    else {
+      alert("Incorrect");
+    }
   }
   render() {
-    let kahoot = buildFirebase();
-    let question = kahoot.ref("/question");
-    question.once("value").then(function(data) {
-      const questions = data.val();
-    });
-     
     return (
+      // expect props.data.question to be question_text
       <div>
         <h1>{this.props.data.question}</h1>
+        <p>
+          <button id="0" onClick={() => this.handleClick(0)}>{this.props.data.choices[0]}</button>
+          <button id="1" onClick={() => this.handleClick(1)}>{this.props.data.choices[1]}</button>
+          <button id="2" onClick={() => this.handleClick(2)}>{this.props.data.choices[2]}</button>
+          <button id="3" onClick={() => this.handleClick(3)}>{this.props.data.choices[3]}</button>
+        </p>
       </div>
-       if (this.state.error) {
-        return <div>{this.state.errorMessage}</div>
-      } else if (this.state.imageUrl) {
-        return <Giphy imageUrl={this.state.imageUrl}/>;
-      } else {
-        return null;
-      }
     );
   }
 }
